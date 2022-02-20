@@ -20,7 +20,8 @@ contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
         maxSupply = _maxSupply;
     }
 
-    function mint() public {
+    function mint() public payable {
+        require(msg.value >= 50000000000000000, "Mint price is 0.05 ETH");
         uint256 current = _idCounter.current();
         require(current < maxSupply, "No PlatziPunks left");
 
